@@ -9,14 +9,14 @@ Full thread dump Java HotSpot(TM) 64-Bit Server VM (25.151-b12 mixed mode):
 
 "Thread-1" #11 prio=5 os_prio=31 tid=0x00007fc17880d800 nid=0x5603 waiting for monitor entry [0x000070000f441000]
    java.lang.Thread.State: BLOCKED (on object monitor)
-	at com.chaoliu.juc.demo.DeadLockDemo$2.run(DeadLockDemo.java:33)
+	at com.chaoliu.juc.lock.DeadLockDemo$2.run(DeadLockDemo.java:33)
 	- waiting to lock <0x000000076abaca48> (a java.lang.Object)
 	- locked <0x000000076abaca58> (a java.lang.Object)
 	at java.lang.Thread.run(Thread.java:748)
 
 "Thread-0" #10 prio=5 os_prio=31 tid=0x00007fc17906e800 nid=0x5503 waiting for monitor entry [0x000070000f33e000]
    java.lang.Thread.State: BLOCKED (on object monitor)
-	at com.chaoliu.juc.demo.DeadLockDemo$1.run(DeadLockDemo.java:20)
+	at com.chaoliu.juc.lock.DeadLockDemo$1.run(DeadLockDemo.java:20)
 	- waiting to lock <0x000000076abaca58> (a java.lang.Object)
 	- locked <0x000000076abaca48> (a java.lang.Object)
 	at java.lang.Thread.run(Thread.java:748)
@@ -92,12 +92,12 @@ Found one Java-level deadlock:
 Java stack information for the threads listed above:
 ===================================================
 "Thread-1":
-	at com.chaoliu.juc.demo.DeadLockDemo$2.run(DeadLockDemo.java:33)
+	at com.chaoliu.juc.lock.DeadLockDemo$2.run(DeadLockDemo.java:33)
 	- waiting to lock <0x000000076abaca48> (a java.lang.Object)
 	- locked <0x000000076abaca58> (a java.lang.Object)
 	at java.lang.Thread.run(Thread.java:748)
 "Thread-0":
-	at com.chaoliu.juc.demo.DeadLockDemo$1.run(DeadLockDemo.java:20)
+	at com.chaoliu.juc.lock.DeadLockDemo$1.run(DeadLockDemo.java:20)
 	- waiting to lock <0x000000076abaca58> (a java.lang.Object)
 	- locked <0x000000076abaca48> (a java.lang.Object)
 	at java.lang.Thread.run(Thread.java:748)

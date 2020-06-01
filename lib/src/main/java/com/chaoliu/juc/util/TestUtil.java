@@ -5,7 +5,7 @@ import com.chaoliu.juc.demo.CasCount;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CasUtil {
+public class TestUtil {
 
 
     //todo 测试线程安全
@@ -16,6 +16,7 @@ public class CasUtil {
         final CasCount cas = new CasCount();
         List<Thread> threads = new ArrayList<Thread>( LENGTH );
 
+        long start = System.currentTimeMillis();
         for (int j = 0; j < LENGTH; j++) {
             Thread thread = new Thread( runnable );
             threads.add( thread );
@@ -33,6 +34,15 @@ public class CasUtil {
                 e.printStackTrace();
             }
         }
+
+        System.out.println( "testThread消耗时间：" + (System.currentTimeMillis() - start) );
+    }
+
+    public static String[] getArgs() {
+        String[] args = new String[2];
+        args[0] = "default";
+        args[1] = "value";
+        return args;
     }
 
 }

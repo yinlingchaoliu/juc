@@ -9,7 +9,7 @@ public class ABA {
     private static AtomicInteger atomicInt = new AtomicInteger(100);
     private static AtomicStampedReference atomicStampedRef = new AtomicStampedReference(100, 0);
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args)  {
         Thread intT1 = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -32,8 +32,13 @@ public class ABA {
 
         intT1.start();
         intT2.start();
-        intT1.join();
-        intT2.join();
+
+        try {
+            intT1.join();
+            intT2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         Thread refT1 = new Thread(new Runnable() {
             @Override
@@ -62,5 +67,12 @@ public class ABA {
 
         refT1.start();
         refT2.start();
+
+        try {
+            refT1.join();
+            refT2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

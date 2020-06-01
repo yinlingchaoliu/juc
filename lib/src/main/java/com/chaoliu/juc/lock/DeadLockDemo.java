@@ -1,4 +1,4 @@
-package com.chaoliu.juc.demo;
+package com.chaoliu.juc.lock;
 
 //测试死锁
 public class DeadLockDemo {

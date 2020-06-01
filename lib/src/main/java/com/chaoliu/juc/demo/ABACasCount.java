@@ -1,11 +1,7 @@
 package com.chaoliu.juc.demo;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicStampedReference;
-
-import static com.chaoliu.juc.util.CasUtil.testThread;
 
 //原子操作与非线程安全计数器
 public class ABACasCount {
@@ -14,38 +10,6 @@ public class ABACasCount {
     private AtomicStampedReference<Integer> atomicStampedRef = new AtomicStampedReference<Integer>( 0, 0 );
 
     private int i = 0;
-
-    public static void main(String[] args) {
-
-        final ABACasCount cas = new ABACasCount();
-
-        //测试并发
-        testThread( new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < 10000; i++) {
-                    cas.safeCount();
-                    cas.unSafeCount();
-                }
-            }
-        } );
-
-        System.out.println( cas.getUnSafeCount() );
-        System.out.println( cas.getSafeCount() );
-
-        //测试ABA
-        testThread( new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < 10; i++) {
-                    cas.safeABACount();
-                }
-            }
-        } );
-
-        System.out.println( cas.getSafeABACount() );
-
-    }
 
     public void safeCount() {
         for (; ; ) {
