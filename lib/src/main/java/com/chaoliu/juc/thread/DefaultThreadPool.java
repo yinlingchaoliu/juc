@@ -87,6 +87,7 @@ public class DefaultThreadPool<Job extends Runnable> implements ThreadPool<Job> 
                 worker.shutdown();
             }
             workers.clear();
+            workerNum.set(0);
         }
     }
 
